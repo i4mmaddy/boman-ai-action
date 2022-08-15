@@ -1,0 +1,6 @@
+name: boman-ai-action
+description: This is an action to run boman ai scan on your repo using the latest available boman-cli tool from pypi.
+author: Madhavan M
+branding:
+  icon: 'shield'
+  color: 'white'
