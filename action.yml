@@ -4,3 +4,11 @@ author: Madhavan M
 branding:
   icon: 'shield'
   color: 'white'
+runs:
+  using: composite
+  steps:
+    - name: Installing Boman-cli       
+      pip install boman-cli   
+    - name: running boman-cli        
+      boman-cli -a run 
+
