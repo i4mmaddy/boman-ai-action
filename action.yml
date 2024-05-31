@@ -1,14 +1,27 @@
 name: boman-ai-action
 description: This is an action to run boman ai scan on your repo using the latest available boman-cli tool from pypi.
-author: Madhavan M
+author: Madhavan Mani
+inputs:
+  boman-action:  # id of input
+    description: 'action for he boman-cli'
+    required: true
+    default: 'run'
+  boman-saas-url:  # id of input
+    description: 'Url of the boman saas'
+    required: false
+    default: 'https://dashboard.boman.ai/v2'  
 branding:
   icon: 'shield'
   color: 'white'
 runs:
   using: composite
   steps:
-    - name: Installing Boman-cli       
-      pip install boman-cli   
-    - name: running boman-cli        
-      boman-cli -a run 
+     - name: running boman-cli
+      id: running-boman-cli
+      shell: bash
+      run: |
+      pip install boman-cli
+      boman-cli -a ${{boman-action}} -u ${{boman-saas-url}}
+      
+
 
