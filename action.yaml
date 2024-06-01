@@ -18,10 +18,12 @@ runs:
       uses: actions/checkout@v3
 
     - name: Install boman-cli
-      run: npm install -g boman-cli
+      run: pip install boman-cli
+      shell: bash
 
     - name: Run boman-cli
       run: boman-cli ${{ inputs.args }}
+      shell: bash
 
 outputs:
   result:
