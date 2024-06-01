@@ -1,0 +1,28 @@
+name: 'Run Boman-CLI'
+description: 'A GitHub Action to run the boman-cli tool'
+author: 'Madhavan <pentester.maddy@gmail.com>'
+branding:
+  icon: 'terminal'
+  color: 'blue'
+
+inputs:
+  args:
+    description: 'Arguments to pass to boman-cli'
+    required: true
+    default: '--help'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Check out the repository
+      uses: actions/checkout@v3
+
+    - name: Install boman-cli
+      run: npm install -g boman-cli
+
+    - name: Run boman-cli
+      run: boman-cli ${{ inputs.args }}
+
+outputs:
+  result:
+    description: 'The result of the boman-cli command'
