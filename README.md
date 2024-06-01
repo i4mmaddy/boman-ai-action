@@ -2,11 +2,37 @@
 
 This action runs the `boman-cli` tool with specified arguments.
 
+
+
+## Example usages
+
+
+
+```yaml
+- name: boman-ai-action
+  uses: i4mmaddy/boman-ai-action@v7
+            
+```
+
+### Advance Options
+
+
+```yaml
+uses: i4mmaddy/boman-ai-action@v7
+with:
+  action: 'run' #optional default is run. other values are test-saas, test-yaml
+  failbuild: 'all' #optional values are 'high' or 'medium or 'low'
+  zap_session_script: 'path/to/your/zap_session_script' #optional 
+  config: 'path/to/your/config' #optional Pass path to the custom boman.yaml file
+  use-sudo: 'true' #optinal Pass 'false' if sudo is not required
+
+
+
 ## Inputs
 
 ### `action`
 
-**Required** The action to perform. Default `"default-action"`.
+**Optional** The action to perform. Default `"run"`.
 
 ### `failbuild`
 
@@ -14,30 +40,19 @@ This action runs the `boman-cli` tool with specified arguments.
 
 ### `zap_session_script`
 
-**Optional** Path to the ZAP session script. Default `""`.
+**Optional** Path to the ZAP session script. Default `"session_management.js"`.
 
 ### `config`
 
-**Optional** Path to the config file. Default `""`.
+**Optional** Path to the config file. Default `"boman.yaml"`.
 
 ### `use-sudo`
 
-**Optional** Whether to run the command with `sudo`. Default `"false"`.
+**Optional** Whether to run the command with `sudo`. Default `"true"`.
 
 ## Outputs
 
 ### `result`
 
 The result of the `boman-cli` command.
-
-## Example usage
-
-```yaml
-uses: i4mmaddy/boman-ai-action@v1
-with:
-  action: 'run' # or test-saas, test-yaml
-  failbuild: 'high' #optional # or 'high' or 'medium or 'low'
-  zap_session_script: 'path/to/your/zap_session_script' #optional
-  config: 'path/to/your/config' #optional
-  use-sudo: 'true' # or 'false' #optional
 
