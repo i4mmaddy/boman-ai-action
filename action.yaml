@@ -57,17 +57,17 @@ runs:
         if [ -n "${{ inputs.boman_saas_url }}" ]; then
           cmd="$cmd -u ${{ inputs.boman_saas_url }}"
         fi
-        echo "::set-output name=cmd::$cmd"
+        echo "cmd=$cmd" >> $GITHUB_ENV
       shell: bash
 
     - name: Run boman-cli without sudo
       if: ${{ inputs.use-sudo != 'true' }}
-      run: ${{ steps.build-command.outputs.cmd }}
+      run: ${{ env.cmd }}
       shell: bash
 
     - name: Run boman-cli with sudo
       if: ${{ inputs.use-sudo == 'true' }}
-      run: sudo ${{ steps.build-command.outputs.cmd }}
+      run: sudo ${{ env.cmd }}
       shell: bash
 
 outputs:
